@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.ibm.com/cloud/trip" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.ibm.com/cloud/trip" targetNamespace="http://www.ibm.com/cloud/trip">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ibm.com/cloud/trip">
+
+    <element name="TripStatusRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="trip" type="int"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="TripStatusResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="trip" type="tns:Trip"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <complexType name="Trip">
+        <sequence>
+            <element name="origin" type="string"/>
+            <element name="departureDate" type="date"/>
+            <element name="departureTime" type="time"/>
+            <element name="destination" type="string"/>
+            <element name="arrivalDate" type="date"/>
+            <element name="arrivalTime" type="time"/>
+            <element name="bus" type="int"/>
+            <element name="status" type="string"/>
+        </sequence>
+    </complexType>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="TripStatusRequest">
+    <wsdl:part element="tns:TripStatusRequest" name="TripStatusRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TripStatusResponse">
+    <wsdl:part element="tns:TripStatusResponse" name="TripStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UserServicePort">
+    <wsdl:operation name="TripStatus">
+      <wsdl:input message="tns:TripStatusRequest" name="TripStatusRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:TripStatusResponse" name="TripStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServicePortSoap11" type="tns:UserServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="TripStatus">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="TripStatusRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="TripStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserServicePortService">
+    <wsdl:port binding="tns:UserServicePortSoap11" name="UserServicePortSoap11">
+      <soap:address location="http://tripstatusws-trip-services.rhocpmx00-0d255d996fcd6abc1b41c2a2192a564d-0000.mex01.containers.appdomain.cloud:80/soapWS/tripstatus"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

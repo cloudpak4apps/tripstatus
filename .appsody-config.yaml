@@ -1,0 +1,3 @@
+id: "20201109213649.59563600"
+project-name: tripstatus
+stack: docker.io/kabanero/java-spring-boot2:0.3

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/cloud/trip" xmlns:tns="http://www.ibm.com/cloud/trip" elementFormDefault="qualified">
+
+    <element name="TripStatusRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="trip" type="int"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="TripStatusResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="trip" type="tns:Trip"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <complexType name="Trip">
+        <sequence>
+            <element name="origin" type="string"/>
+            <element name="departureDate" type="date"/>
+            <element name="departureTime" type="time"/>
+            <element name="destination" type="string"/>
+            <element name="arrivalDate" type="date"/>
+            <element name="arrivalTime" type="time"/>
+            <element name="bus" type="int"/>
+            <element name="status" type="string"/>
+        </sequence>
+    </complexType>
+</schema>

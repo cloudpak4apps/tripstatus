@@ -1,0 +1,85 @@
+apiVersion: appsody.dev/v1beta1
+kind: AppsodyApplication
+metadata:
+  annotations:
+    architecture: x86_64
+    build-date: 2020-09-01T19:43:46.041620
+    commit.stack.appsody.dev/contextDir: /incubator/java-spring-boot2
+    commit.stack.appsody.dev/date: Fri Oct 9 09:28:22 2020 -0400
+    commit.stack.appsody.dev/message: 'Merge pull request #347 from garypicher/updateUBIVersionForOpenJDKImage'
+    description: This image is the Kabanero development container for the java-spring-boot2
+      stack
+    distribution-scope: public
+    image.opencontainers.org/created: "2020-11-10T12:21:45-06:00"
+    k8s.io/description: The Universal Base Image is designed and engineered to be
+      the base layer for all of your containerized applications, middleware and utilities.
+      This base image is freely redistributable, but Red Hat only supports Red Hat
+      technologies through subscriptions for Red Hat products. This image is maintained
+      by Red Hat and updated regularly.
+    k8s.io/display-name: Red Hat Universal Base Image 8
+    maintainer: Red Hat, Inc.
+    name: kabanero/java-spring-boot2
+    openshift.io/expose-services: ""
+    openshift.io/tags: base rhel8
+    redhat.com/build-host: cpt-1008.osbs.prod.upshift.rdu2.redhat.com
+    redhat.com/component: ubi8-container
+    redhat.com/license_terms: https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI
+    release: "347"
+    stack.appsody.dev/authors: Mike Andrasak <uberskigeek>, Andy Mauer <ajm01>, Scott
+      Kurz <scottkurz>, Adam Wisniewski <awisniew90>
+    stack.appsody.dev/configured: docker.io/kabanero/java-spring-boot2:0.3
+    stack.appsody.dev/created: "2020-10-09T19:29:16Z"
+    stack.appsody.dev/description: Spring Boot using OpenJ9 and Maven
+    stack.appsody.dev/digest: sha256:26967ae1dbb132bb3ef942042bfa2384cd00726daabee81ce6023d979ad42995
+    stack.appsody.dev/documentation: https://github.com/kabanero-io/collections/tree/master/incubator/java-spring-boot2/README.md
+    stack.appsody.dev/licenses: Apache-2.0
+    stack.appsody.dev/revision: 399b43ed14eb9238a8f9068f59b4bc535b62112b
+    stack.appsody.dev/source: https://github.com/kabanero-io/collections/tree/master/incubator/java-spring-boot2/image
+    stack.appsody.dev/tag: docker.io/kabanero/java-spring-boot2:0.3.31
+    stack.appsody.dev/title: Spring Boot®
+    stack.appsody.dev/url: https://github.com/kabanero-io/collections/tree/master/incubator/java-spring-boot2
+    summary: Image for Kabanero java-spring-boot2 development
+    url: https://access.redhat.com/containers/#/registry.access.redhat.com/ubi8/images/8.2-347
+    vcs-ref: 663db861f0ff7a9c526c1c169a62c14c01a32dcc
+    vcs-type: git
+    vendor: Kabanero
+    version: 0.3.23
+  creationTimestamp: null
+  labels:
+    image.opencontainers.org/title: tripstatus
+    stack.appsody.dev/id: java-spring-boot2
+    stack.appsody.dev/version: 0.3.31
+  name: tripstatus
+  namespace: trip-services
+spec:
+  applicationImage: image-registry.openshift-image-registry.svc:5000/trip-services/tripstatus:3
+  createKnativeService: false
+  expose: true
+  livenessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /actuator/liveness
+      port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 2
+  monitoring:
+    endpoints:
+    - path: /actuator/prometheus
+    labels:
+      k8s-app: tripstatus
+  readinessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /actuator/health
+      port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 2
+    timeoutSeconds: 1
+  service:
+    annotations:
+      prometheus.io/path: /actuator/prometheus
+      prometheus.io/scrape: "true"
+    port: 8080
+    type: NodePort
+  stack: java-spring-boot2
+  version: 1.0.0

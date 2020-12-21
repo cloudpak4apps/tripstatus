@@ -21,7 +21,7 @@ public class TripStatusService {
 
         StringBuffer buffer = new StringBuffer();
         buffer.append("ON TIME - ");
-        //buffer.append(InetAddress.getLocalHost().getHostName());
+        buffer.append(InetAddress.getLocalHost().getHostName());
         trip.setBus(tripId);
         trip.setOrigin("MEX");
         trip.setDestination("PUE");

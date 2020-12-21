@@ -22,7 +22,7 @@ public class TripStatusService {
         try {
 
         StringBuffer buffer = new StringBuffer();
-        buffer.append("ON TIME - ");
+        buffer.append("ON TIME");
         buffer.append(InetAddress.getLocalHost().getHostName());
         trip.setBus(tripId);
         trip.setOrigin("MEX");

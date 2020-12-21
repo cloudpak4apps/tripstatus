@@ -52,7 +52,7 @@ metadata:
   name: tripstatus
   namespace: trip-services
 spec:
-  applicationImage: dev.local/tripstatus
+  applicationImage: image-registry.openshift-image-registry.svc:5000/trip-services/tripstatus:tkn
   createKnativeService: false
   expose: true
   livenessProbe:

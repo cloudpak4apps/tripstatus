@@ -15,6 +15,8 @@ import application.com.ibm.cloud.trip.Trip;
 @Service
 public class TripStatusService {
 
+
+
     public Trip getTripStatus(int tripId) {
         Trip trip = new Trip();
         try {

@@ -17,6 +17,9 @@ public class TripStatusService {
 
 
 
+
+
+
     public Trip getTripStatus(int tripId) {
         Trip trip = new Trip();
         try {
